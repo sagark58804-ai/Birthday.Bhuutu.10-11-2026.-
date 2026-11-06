@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Vashnavi ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 650px;
+    padding: 35px 25px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.17);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.35);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    animation: appear 1.2s ease;
+    z-index: 2;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: clamp(30px, 7vw, 48px);
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px #ffdfef;
+}
+
+.name {
+    font-size: clamp(38px, 9vw, 65px);
+    font-weight: bold;
+    color: #fff4a3;
+    text-shadow: 0 0 20px #ff4f91;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff; }
+    to { text-shadow: 0 0 30px #ffdbf0; }
+}
+
+.cake {
+    font-size: 85px;
+    margin: 20px 0;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.message {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 20px 0;
+}
+
+button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #e84393;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.07);
+    background: #fff0f6;
+}
+
+#surprise {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.2);
+    font-size: 18px;
+    line-height: 1.8;
+    animation: appear 1s ease;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    animation: floatUp 7s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.footer {
+    margin-top: 25px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+@media(max-width: 480px) {
+    .container {
+        padding: 28px 18px;
+    }
+
+    .message {
+        font-size: 16px;
+    }
+
+    .cake {
+        font-size: 70px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+
+    <h1>🎉 Happy Birthday 🎉</h1>
+
+    <div class="name">Vashnavi ❤️</div>
+
+    <div class="cake">🎂</div>
+
+    <div class="message">
+        Wishing you a day filled with endless happiness,
+        beautiful smiles, unforgettable memories and
+        lots of love! 💖
+
+        <br><br>
+
+        May all your dreams come true and may every
+        moment of your life shine brighter than ever.
+
+        <br><br>
+
+        Keep smiling, keep shining and stay amazing! 🌸
+    </div>
+
+    <button onclick="showSurprise()">
+        🎁 Click for a Surprise
+    </button>
+
+    <div id="surprise">
+        💝 A Special Message for You 💝
+
+        <br><br>
+
+        You are one of a kind, and you deserve all
+        the happiness in the world.
+
+        May your birthday bring new adventures,
+        beautiful opportunities and countless reasons
+        to smile.
+
+        <br><br>
+
+        Once Again, Happy Birthday Vashnavi! 🥳❤️
+
+        <br>
+        Lots of love! 🌷
+    </div>
+
+    <div class="footer">
+        Made with ❤️ just for Vashnavi
+    </div>
+
+</div>
+
+<script>
+// Surprise message
+function showSurprise() {
+    const box = document.getElementById("surprise");
+    box.style.display = "block";
+    launchConfetti();
+}
+
+// Confetti animation
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let pieces = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function launchConfetti() {
+    const colors = [
+        "#ff0a54", "#ffbe0b", "#8338ec",
+        "#3a86ff", "#ffffff", "#06d6a0",
+        "#ff70a6"
+    ];
+
+    for (let i = 0; i < 180; i++) {
+        pieces.push({
+            x: Math.random() * canvas.width,
+            y: -20 - Math.random() * canvas.height,
+            size: Math.random() * 8 + 4,
+            speed: Math.random() * 4 + 2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            spin: Math.random() * 8 - 4
+        });
+    }
+}
+
+function animateConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    pieces.forEach((p, index) => {
+        p.y += p.speed;
+        p.x += Math.sin(p.y * 0.02) * 2;
+        p.rotation += p.spin;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+        ctx.restore();
+
+        if (p.y > canvas.height + 20) {
+            pieces.splice(index, 1);
+        }
+    });
+
+    requestAnimationFrame(animateConfetti);
+}
+
+animateConfetti();
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = ["❤️", "💕", "💖", "🌸", "✨"][
+        Math.floor(Math.random() * 5)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 500);
+
+// Initial celebration
+window.onload = function() {
+    launchConfetti();
+};
+</script>
+
+</body>
+</html>
